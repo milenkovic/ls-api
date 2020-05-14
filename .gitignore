@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+.vscode
+.idea
+
+# production
+/dist
+
+# misc
+.env*
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
