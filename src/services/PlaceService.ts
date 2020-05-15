@@ -1,11 +1,12 @@
 import {DAYS_OF_WEEK} from '@shared/constants';
-import {Day, APIDay} from '@interfaces';
+import {Day, APIDay, Place} from '@interfaces';
 
 export function transformResponse(place: any) {
-  const transformedPlace = {
+  const transformedPlace: Place = {
     openingHours: transformOpeningHours(place.opening_hours),
     name: place.displayed_what,
     address: place.displayed_where,
+    id: place.local_entry_id
   };
   return transformedPlace;
 }
@@ -14,7 +15,7 @@ export function transformOpeningHours(place: any) {
   const transformedDays: Day[] = [];
   const apiDays: any = place.days;
   let isPreviousWeekDayInserted: any = null;
-  DAYS_OF_WEEK.forEach((dayName: string, index: number) => {
+  DAYS_OF_WEEK.forEach((dayName: string) => {
     const isDayExistsInAPI = apiDays[dayName];
     if (isDayExistsInAPI) {
       let formatedDay;
