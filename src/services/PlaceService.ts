@@ -1,24 +1,6 @@
-const daysOfTheWeek = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday',
-];
+import {DAYS_OF_WEEK} from '@shared/constants';
+import {Day, APIDay} from '@interfaces';
 
-export interface Day {
-  start: string;
-  end?: string;
-  hours: string[];
-}
-
-export interface APIDay {
-  start: string;
-  end: string;
-  type: string;
-}
 export function transformResponse(place: any) {
   const transformedPlace = {
     openingHours: transformOpeningHours(place.opening_hours),
@@ -28,11 +10,11 @@ export function transformResponse(place: any) {
   return transformedPlace;
 }
 
-function transformOpeningHours(place: any) {
+export function transformOpeningHours(place: any) {
   const transformedDays: Day[] = [];
   const apiDays: any = place.days;
   let isPreviousWeekDayInserted: any = null;
-  daysOfTheWeek.forEach((dayName: string, index: number) => {
+  DAYS_OF_WEEK.forEach((dayName: string, index: number) => {
     const isDayExistsInAPI = apiDays[dayName];
     if (isDayExistsInAPI) {
       let formatedDay;
@@ -64,11 +46,11 @@ function transformOpeningHours(place: any) {
   return transformedDays;
 }
 
-function previousDayIsNotSame(formatedDay: Day, nextFormatedDay: Day) {
+export function previousDayIsNotSame(formatedDay: Day, nextFormatedDay: Day) {
   return formatedDay.hours !== nextFormatedDay.hours;
 }
 
-function formatDay(periods: any, dayOfWeek: string) {
+export function formatDay(periods: any, dayOfWeek: string) {
   return {
     start: dayOfWeek,
     hours: periods

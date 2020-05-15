@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { BAD_REQUEST, OK } from 'http-status-codes';
-import { transformResponse } from '../services/PlaceService';
+import { transformResponse } from '@services/PlaceService';
 import superagent from 'superagent';
 
 const router = Router();

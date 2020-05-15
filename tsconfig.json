@@ -13,18 +13,21 @@
     "target": "es6",
     "moduleResolution": "node",
     "paths": {
-      "@daos/*": [
-        "src/daos/*"
-      ],
-      "@entities/*": [
-        "src/entities/*"
-      ],
       "@shared/*": [
         "src/shared/*"
       ],
       "@server": [
         "src/Server"
-      ]
+      ],
+      "@interfaces": [
+        "src/interfaces/index"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@constants": [
+        "src/shared/constants/index"
+      ],
     },
     "types": [
       "node"
@@ -35,7 +38,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "spec/**/*.ts"
+    "tests/**/*.ts"
   ],
   "exclude": [
     "src/public/"

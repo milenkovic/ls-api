@@ -4,7 +4,6 @@ import helmet from 'helmet';
 
 import express, { Request, Response, NextFunction } from 'express';
 import { BAD_REQUEST } from 'http-status-codes';
-import 'express-async-errors';
 
 import BaseRouter from './routes';
 import logger from '@shared/Logger';
@@ -27,7 +26,6 @@ if (process.env.NODE_ENV === 'production') {
     app.use(helmet());
 }
 
-// Add APIs
 app.use('/api', BaseRouter);
 
 // Print API errors
@@ -38,5 +36,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     });
 });
 
-// Export express instance
 export default app;
